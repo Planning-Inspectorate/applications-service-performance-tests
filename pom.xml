@@ -8,5 +8,60 @@
     <artifactId>applications-service-performance-tests</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>2.9.0</version>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jMeterProcessJVMSettings>
+                        <xms>1024</xms>
+                        <xmx>4000</xmx>
+                        <arguments>
+                            <argument>-Xprof</argument>
+                            <argument>-Xfuture</argument>
+                        </arguments>
+                    </jMeterProcessJVMSettings>
+                    <propertiesUser>
+                        <USERS>${USERS}</USERS>
+                        <RAMP_UP_PERIOD>${RAMP_UP_PERIOD}</RAMP_UP_PERIOD>
+                        <LOAD_DURATION>${LOAD_DURATION}</LOAD_DURATION>
+                    </propertiesUser>
+                    <resultsFileFormat>xml</resultsFileFormat>
+                    <testResultsTimestamp>false</testResultsTimestamp>
+                    <generateReports>true</generateReports>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>de.codecentric</groupId>
+                <artifactId>jmeter-graph-maven-plugin</artifactId>
+                <version>0.1.0</version>
+                <configuration>
+                    <inputFile>${project.build.directory}/jmeter/results/ApplicationsServiceUserJourneyTestPlan.jtl</inputFile>
+                    <graphs>
+                        <graph>
+                            <pluginType>ThreadsStateOverTime</pluginType>
+                            <width>800</width>
+                            <height>600</height>
+                            <outputFile>${project.build.directory}/jmeter/results/ApplicationsService-ThreadsStateOverTime.png
+                            </outputFile>
+                        </graph>
+                        <!-- ... you can declare more <graph>-elements here -->
+                    </graphs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

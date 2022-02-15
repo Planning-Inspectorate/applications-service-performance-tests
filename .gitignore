@@ -1,3 +1,8 @@
 .idea/
 .idea
 applications-service-performance-tests.iml
+target/
+target
+testResults/
+testResults
+jmeter.log
