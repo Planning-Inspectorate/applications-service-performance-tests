@@ -16,13 +16,17 @@
 
 ## To execute Performance tests in GUI Mode, execute below command from the root of the project:
 
-1. **jmeter -t src/test/jmeter/ApplicationsServiceUserJourneyTestPlan.jmx**
+1. **jmeter -t src/test/jmeter/ApplicationsServiceMyselfJourneyTestPlan.jmx**
 
-2. You will now see the Jmeter application opened with the Test Plan
+2. **jmeter -t src/test/jmeter/ApplicationsServiceAgentJourneyTestPlan.jmx**
 
-3. You can now make any changes to the test plan using GUI and save them
+3. **jmeter -t src/test/jmeter/ApplicationsServiceOrgJourneyTestPlan.jmx**
 
-4. Always execute using 1 user in GUI mode as more users will cause GUI to hang up
+4. You will now see the Jmeter application opened with the Test Plan
+
+5. You can now make any changes to the test plan using GUI and save them
+
+6. Always execute using 1 user in GUI mode as more users will cause GUI to hang up
 
 
 ## To execute Performance tests in NON-GUI Mode:
@@ -35,11 +39,19 @@
 
 4. Then execute below command with `USERS`, `RAMP_UP_PERIOD` and LOAD_DURATION depending on requirement
 
-   **jmeter -n -f -JUSERS=1 -JRAMP_UP_PERIOD=1 -JLOAD_DURATION=120 -t ./src/test/jmeter/ApplicationsServiceUserJourneyTestPlan.jmx -l ./testResults/JmeterTestResults/ApplicationsServiceUserJourneyTestPlan.jtl -e -o ./testResults/tests/Output**
+   **jmeter -n -f -JUSERS=1 -JRAMP_UP_PERIOD=1 -JLOAD_DURATION=120 -t ./src/test/jmeter/ApplicationsServiceMyselfJourneyTestPlan.jmx -l ./testResults/JmeterTestResults/ApplicationsServiceMyselfJourneyTestPlan.jtl -e -o ./testResults/tests/Myself/Output**
 
-5. After the above execution is completed navigate to below folder
+   **jmeter -n -f -JUSERS=1 -JRAMP_UP_PERIOD=1 -JLOAD_DURATION=120 -t ./src/test/jmeter/ApplicationsServiceAgentJourneyTestPlan.jmx -l ./testResults/JmeterTestResults/ApplicationsServiceAgentJourneyTestPlan.jtl -e -o ./testResults/tests/Agent/Output**
 
-   **testResults > tests > Output**
+   **jmeter -n -f -JUSERS=1 -JRAMP_UP_PERIOD=1 -JLOAD_DURATION=120 -t ./src/test/jmeter/ApplicationsServiceOrgJourneyTestPlan.jmx -l ./testResults/JmeterTestResults/ApplicationsServiceOrgJourneyTestPlan.jtl -e -o ./testResults/tests/Org/Output**
+
+5. After the above execution is completed navigate to below folder depending on test plan that was executed above
+
+   **testResults > tests > Myself > Output**
+
+   **testResults > tests > Agent > Output**
+
+   **testResults > tests > Org > Output**
 
 6. Open **index.html** file using any browser which will display the performance test results in a web page
 

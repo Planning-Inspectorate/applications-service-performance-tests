@@ -6,3 +6,4 @@ target
 testResults/
 testResults
 jmeter.log
+*.hprof
