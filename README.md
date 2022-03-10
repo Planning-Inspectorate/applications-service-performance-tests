@@ -37,6 +37,12 @@
 
 3. Inside the **testResults** folder create a folder called **tests** and give full read and write access to it
 
+3. Inside the **tests** folder create a folder called **Agent** and give full read and write access to it
+
+3. Inside the **tests** folder create a folder called **Myself** and give full read and write access to it
+
+3. Inside the **tests** folder create a folder called **Org** and give full read and write access to it
+
 4. Then execute below command with `USERS`, `RAMP_UP_PERIOD` and LOAD_DURATION depending on requirement
 
    **jmeter -n -f -JUSERS=1 -JRAMP_UP_PERIOD=1 -JLOAD_DURATION=120 -t ./src/test/jmeter/ApplicationsServiceMyselfJourneyTestPlan.jmx -l ./testResults/JmeterTestResults/ApplicationsServiceMyselfJourneyTestPlan.jtl -e -o ./testResults/tests/Myself/Output**
